@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Roboto;
 }
 
 a {
@@ -13,4 +12,42 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.backgroundAuth {
+  background-image: url(../public/images/background-auth.jpg);
+  height: 100%;
+  background-position: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form_input {
+  height: 56px;
+}
+
+.btnLink {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #57637e;
+  border: 1.5px solid #d6dae6;
+  border-radius: 6px;
+}
+
+.btnSubmit {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #ffffff;
+  background: #41b49b;
+  border-radius: 10px;
 }

@@ -11,3 +11,33 @@
   background: #41b49b;
   border-radius: 10px;
 }
+
+.backgroundAuth {
+  background-image: url(../public/images/background-auth.jpg);
+  height: 100vh;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  bottom: 0;
+}
+
+.form_input {
+  height: 56px;
+}
+
+.btnLink {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #57637e;
+  border: 1.5px solid #d6dae6;
+  border-radius: 6px;
+}
+
+.error {
+  color: red;
+}

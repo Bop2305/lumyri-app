@@ -1,0 +1,21 @@
+.background-modal {
+  background-image: url(../public/images/background-modal.jpg);
+  background-position: top left;
+  background-repeat: no-repeat;
+  // background-size: contain;
+  height: 561px;
+  width: 452px;
+  border-radius: 10px;
+}
+
+.modal-header {
+  justify-content: center !important;
+}
+
+.modal-form {
+  justify-content: center !important;
+}
+
+.modal-btn {
+  justify-content: center !important;
+}

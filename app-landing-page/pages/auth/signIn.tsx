@@ -3,7 +3,41 @@ import styles from "../../styles/SignIn.module.scss";
 import Footer from "../../components/auth/Footer";
 import { Button, Form } from "react-bootstrap";
 
+import { useFormik } from "formik";
+
+interface Values {
+  email: string;
+  password: string;
+}
+
+interface Errors {
+  [key: string]: string;
+}
+
 const SignIn = () => {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: (values: Values) => {
+      console.log(values);
+    },
+    validate: (values: Values) => {
+      let errors: Errors = {};
+      if (!values.email) {
+        errors.email = "Required";
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ) {
+        errors.email = "Invalid email address";
+      }
+      if (!values.password) {
+        errors.password = "Require";
+      }
+      return errors;
+    },
+  });
   return (
     <div className="container-fluid backgroundAuth row">
       <div className={`col-lg-3 offset-3 ${styles.leftSide}`}>
@@ -33,13 +67,31 @@ const SignIn = () => {
         </div>
       </div>
       <div className={`col-lg-3 offset-2 ${styles.rightSide}`}>
-        <Form style={{ width: "360px" }}>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control type="email" placeholder="Email Address" />
+        <Form style={{ width: "360px" }} onSubmit={formik.handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control type="password" placeholder="Password" />
+          {formik.errors.email ? (
+            <div className="mb-3 error">{formik.errors.email}</div>
+          ) : null}
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+            />
           </Form.Group>
+          {formik.errors.password ? (
+            <div className="mb-3 error">{formik.errors.password}</div>
+          ) : null}
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Remember Me" />
           </Form.Group>

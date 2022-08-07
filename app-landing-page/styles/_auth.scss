@@ -1,0 +1,13 @@
+@mixin font-config($weight, $size, $height, $color) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $color;
+}
+
+.btnSubmit {
+  @include font-config(500, 18px, 21px, #ffffff);
+  height: 58px;
+  background: #41b49b;
+  border-radius: 10px;
+}

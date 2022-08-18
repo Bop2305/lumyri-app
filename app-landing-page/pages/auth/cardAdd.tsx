@@ -32,11 +32,9 @@ const CardAdd = () => {
                     placeholder="Card Number"
                   ></Form.Control>
                 </Form.Group>
-                <Form.Group as={Col} xs={3}>
-                  <Form.Control
-                    type="text"
-                    placeholder="MM/YYYY"
-                  ></Form.Control>
+                <Form.Group as={Col} xs={3}></Form.Group>
+                <Form.Group>
+                  <Form.Control type="text" placeholder="Card Number" />
                 </Form.Group>
                 <Form.Group as={Col} xs={2}>
                   <Form.Control type="text" placeholder="CVV"></Form.Control>

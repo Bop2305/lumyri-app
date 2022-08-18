@@ -21,7 +21,7 @@ const CardAdd = () => {
               <span>Add a Card</span>
             </div>
             <Form>
-              <h5>Edit Card:</h5>
+              <h5>Card:</h5>
               <Row className="mb-3 mt-3">
                 <Form.Group as={Col} xs={7}>
                   <Form.Control

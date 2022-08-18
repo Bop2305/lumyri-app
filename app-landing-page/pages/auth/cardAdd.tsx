@@ -22,6 +22,7 @@ const CardAdd = () => {
             </div>
             <Form>
               <h5>Edit Card Details:</h5>
+              <h5>Test</h5>
               <Row className="mb-3 mt-3">
                 <Form.Group as={Col} xs={7}>
                   <Form.Control

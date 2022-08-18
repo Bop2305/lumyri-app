@@ -22,6 +22,9 @@ const CardAdd = () => {
             </div>
             <Form>
               <h5>Card:</h5>
+              <div>Test</div>
+              <div>Test</div>
+              <div>Test</div>
               <Row className="mb-3 mt-3">
                 <Form.Group as={Col} xs={7}>
                   <Form.Control

@@ -93,6 +93,12 @@ const CardAdd = () => {
           </div>
         </div>
       </Container>
+      <div className="right-side">
+        <div>
+          Please provide the billing address associated with the credit card you
+          have provided avobe.
+        </div>
+      </div>
     </div>
   );
 };

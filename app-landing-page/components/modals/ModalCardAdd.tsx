@@ -34,7 +34,7 @@ type CardDto = { [key: string]: string } & {
   lastName: string;
   streetName: string;
   aptNumber: string;
-  stateName: string;
+  stateId: string;
   zipCode: string;
 };
 
@@ -51,14 +51,15 @@ const FormLabelCustom = styled(FormLabel)`
 
 const Footer = styled(Row)`
   margin-top: 23px;
-  margin-bottom: 25px;
+  margin-bottom: 31px;
 `;
 
 const Checkbox = styled(Form.Check)`
   .form-check-input {
-    width: 24px;
-    height: 24px;
-    background-color: #41b49b;
+    width: 20px;
+    height: 21px;
+    background: #41b49b;
+    border-radius: 3px;
     border: none;
   }
   .form-check-label {
@@ -66,8 +67,20 @@ const Checkbox = styled(Form.Check)`
     font-size: 14px;
     line-height: 16px;
     color: #737a83;
-    margin-left: 5px;
+    margin-left: 14px;
   }
+`;
+
+const FormSelect = styled(Form.Select)`
+  height: 50px;
+  margin-top: 9px;
+  margin-bottom: 29px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 26px;
+  border: 1.5px solid #e2e5e8;
+  border-radius: 6px;
+  cursor: pointer;
 `;
 
 export const ModalCardAdd = ({
@@ -89,7 +102,7 @@ export const ModalCardAdd = ({
       lastName: "",
       streetName: "",
       aptNumber: "",
-      stateName: "",
+      stateId: "",
       zipCode: "",
     },
     validate: (values: CardDto) => {
@@ -108,14 +121,14 @@ export const ModalCardAdd = ({
   });
 
   const addNewAddress = (
-    stateName: string,
+    stateId: string,
     streetName: string,
     zipCode: string,
     aptNumber: string
   ) => {
     console.log("add new address");
     return setAddressState({
-      stateName,
+      stateId,
       streetName,
       zipCode,
       aptNumber,
@@ -191,13 +204,18 @@ export const ModalCardAdd = ({
               <Col>
                 <FormGroup>
                   <FormLabelCustom>{t("payments:country")}</FormLabelCustom>
-                  <Input
-                    type="text"
-                    name="country"
-                    onChange={handleChange}
+                  <FormSelect
                     value={values.country}
-                    error={errors.country}
-                  />
+                    onChange={(e: { target: { value: string } }) => {
+                      values.country = e.target.value;
+                    }}
+                  >
+                    {data.map(({ address }) => (
+                      <option key={address.countryId} value={address.countryId}>
+                        {address.countryName}
+                      </option>
+                    ))}
+                  </FormSelect>
                 </FormGroup>
               </Col>
             </Row>
@@ -206,7 +224,6 @@ export const ModalCardAdd = ({
                 <Form.Check
                   type="radio"
                   name="address"
-                  // value={addressState}
                   checked={isDisable === true}
                   onChange={() => {
                     setIsDisable(!isDisable);
@@ -222,13 +239,12 @@ export const ModalCardAdd = ({
               </div>
             ))}
             <div className="radio-wrapper">
-              <Row>
-                <Col xs={8}>
+              <Row className="mb-4">
+                <Col xs={7}>
                   <Form.Check
                     type="radio"
                     name="address"
                     checked={isDisable === false}
-                    // value={addressState}
                     onChange={() => setIsDisable(!isDisable)}
                     label={
                       <>
@@ -239,20 +255,20 @@ export const ModalCardAdd = ({
                     }
                   />
                 </Col>
-                <Col className="text-end px-0">
+                <Col className="text-end">
                   <Btn
                     height="26px"
                     style="outline"
                     label={t("payments:cancel")}
                   />
                 </Col>
-                <Col className="text-end px-0">
+                <Col className="text-end">
                   <Btn
                     height="26px"
                     label={t("payments:save")}
                     onClick={() =>
                       addNewAddress(
-                        values.stateName,
+                        values.stateId,
                         values.streetName,
                         values.zipCode,
                         values.aptNumber
@@ -328,13 +344,21 @@ export const ModalCardAdd = ({
                           <FormLabelCustom>
                             {t("payments:stateName")}
                           </FormLabelCustom>
-                          <Input
-                            type="text"
-                            name="stateName"
-                            onChange={handleChange}
-                            value={values.stateName}
-                            error={errors.stateName}
-                          />
+                          <FormSelect
+                            value={values.stateId}
+                            onChange={(e: { target: { value: string } }) => {
+                              values.stateId = e.target.value;
+                            }}
+                          >
+                            {data.map(({ address }) => (
+                              <option
+                                key={address.stateId}
+                                value={address.stateId}
+                              >
+                                {address.stateName}
+                              </option>
+                            ))}
+                          </FormSelect>
                         </FormGroup>
                       </Col>
                     </Row>
@@ -357,7 +381,7 @@ export const ModalCardAdd = ({
               </fieldset>
             </div>
             <Footer>
-              <Col xs={5}>
+              <Col xs={5} className="d-flex align-items-center">
                 <Checkbox
                   type="checkbox"
                   label={t("payments:setAsDefaultCard")}

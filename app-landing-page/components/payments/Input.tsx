@@ -27,7 +27,12 @@ const InputWrapper = styled(FormGroup)`
 export const Input = ({ icon = <></>, error = "", ...props }) => {
   return (
     <InputWrapper className="input-wrapper">
-      <Form.Control className={!error ? " " : "erros-input"} {...props} />
+      <Form.Control
+        style={
+          !error ? {} : { border: "1.5px solid red", background: "#FDE9EA" }
+        }
+        {...props}
+      />
       <div className="icon">{icon}</div>
     </InputWrapper>
   );

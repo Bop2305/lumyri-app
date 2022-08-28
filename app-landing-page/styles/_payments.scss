@@ -1,0 +1,28 @@
+.radio-wrapper {
+  background: #ecf2fc;
+  border-radius: 6px;
+  padding: 12px 21px 12px 21px;
+  margin-bottom: 11px;
+  .form-check-input {
+    width: 21px;
+    height: 21px;
+  }
+  .title {
+    margin-left: 15px;
+    margin-right: 12px;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 26px;
+    color: #092c4c;
+  }
+  .street {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #092c4c;
+  }
+}
+
+.errors-input {
+  border: red;
+}

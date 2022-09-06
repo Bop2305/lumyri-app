@@ -25,23 +25,18 @@ const InputWrapper = styled(Row)`
     color: #092c4c;
     border: 1.5px solid #e2e5e8;
     &:focus {
-      border: 0;
+      border: 0.25rem solid rgb(13 110 253 / 25%);
       box-shadow: none;
     }
-  }
-
-  &.focusing {
-    border: 0.25rem solid rgb(13 110 253 / 25%);
-    border-radius: 6px;
   }
 `;
 
 export const InputNested = () => {
   const ref = useRef();
-  const [focus, setFocus] = useState(false);
+
   return (
     <>
-      <InputWrapper ref={ref} className={focus ? "gx-0 focusing" : "gx-0"}>
+      <InputWrapper ref={ref} className="gx-0">
         <Col>
           <InputMask
             mask="99/9999"
@@ -49,7 +44,6 @@ export const InputNested = () => {
             type="text"
             name="expiry"
             placeholder="MM/YYYY"
-            //onFocus={() => setFocus(true)}
           />
         </Col>
         <Col>
@@ -58,7 +52,6 @@ export const InputNested = () => {
             name="cvv"
             placeholder="CVV"
             className="right-input"
-            //onClick={() => setFocus(true)}
           />
         </Col>
       </InputWrapper>

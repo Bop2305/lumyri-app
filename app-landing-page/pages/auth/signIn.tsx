@@ -6,6 +6,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import { ModalForgotPassword } from "../../components/modals/ModalForgotPassword";
 import React, { useState } from "react";
+import { ModalOTP } from "../../components/modals/ModalOTP";
 
 interface Values {
   email: string;
@@ -47,10 +48,7 @@ const SignIn = () => {
     <div className="backgroundAuth">
       <Container>
         {showModal ? (
-          <ModalForgotPassword
-            show={showModal}
-            handleCloseModal={() => setShowModal(false)}
-          />
+          <ModalOTP show={showModal} handleClose={() => setShowModal(false)} />
         ) : null}
         <div className="row">
           <div className={`col-lg-3 offset-3 ${styles.leftSide}`}>
